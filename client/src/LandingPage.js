@@ -14,7 +14,7 @@ function LandingPage() {
           </h1>
           <p className="hero-subtitle">Real-Time Road Hazard Reporting System</p>
           <p className="hero-tagline">Empowering Drivers with Live Road Safety Information</p>
-          <button className="cta-button" onClick={onGetStarted}>
+          <button className="cta-button" onClick={() => navigate('/app')}>
             Get Started →
           </button>
         </div>
@@ -94,7 +94,7 @@ function LandingPage() {
         <div className="container">
           <h2>Ready to Make Roads Safer?</h2>
           <p>Join thousands of drivers reporting hazards in real-time</p>
-          <button className="cta-button-large" onClick={onGetStarted}>
+          <button className="cta-button-large" onClick={() => navigate('/app')}>
             Launch App →
           </button>
         </div>
