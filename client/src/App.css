@@ -1,0 +1,256 @@
+.App {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.controls {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  max-width: 320px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.controls h1 {
+  font-size: 22px;
+  margin-bottom: 18px;
+  color: white;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.controls button {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 8px;
+  background: white;
+  color: #667eea;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.controls button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+.controls button.active {
+  background: #ff6b6b;
+  color: white;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+.controls button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.report-form {
+  margin-top: 15px;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.report-form p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.report-form select,
+.report-form input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 8px;
+  font-size: 14px;
+  background: rgba(255,255,255,0.95);
+  transition: all 0.3s ease;
+}
+
+.report-form select:focus,
+.report-form input:focus {
+  outline: none;
+  border-color: white;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.2);
+}
+
+.hazard-popup {
+  text-align: center;
+  min-width: 200px;
+}
+
+.hazard-popup h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+  font-weight: 600;
+}
+
+.hazard-popup p {
+  font-size: 13px;
+  margin: 8px 0;
+  color: #666;
+}
+
+.hazard-popup button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.hazard-popup button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+}
+
+.stats-panel {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  min-width: 200px;
+}
+
+.stats-panel h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: #333;
+  font-weight: 600;
+}
+
+.stats-panel .stat-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.stats-panel .stat-item:last-child {
+  border-bottom: none;
+}
+
+.stats-panel .stat-label {
+  font-size: 13px;
+  color: #666;
+}
+
+.stats-panel .stat-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #667eea;
+}
+
+.filter-panel {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  max-width: 250px;
+}
+
+.filter-panel h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: #333;
+  font-weight: 600;
+}
+
+.filter-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-chip {
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 2px solid #667eea;
+  background: white;
+  color: #667eea;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.filter-chip:hover {
+  transform: translateY(-2px);
+}
+
+.filter-chip.active {
+  background: #667eea;
+  color: white;
+}
+
+.loading-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2000;
+}
+
+.spinner {
+  border: 4px solid rgba(102, 126, 234, 0.2);
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
