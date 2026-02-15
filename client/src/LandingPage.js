@@ -1,7 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './LandingPage.css';
 
-function LandingPage({ onGetStarted }) {
+function LandingPage() {
+  const navigate = useNavigate();
+  
   return (
     <div className="landing-page">
       <div className="hero-section">

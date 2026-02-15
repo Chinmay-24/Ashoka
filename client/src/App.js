@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
 import io from 'socket.io-client';
+import Navigation from './components/Navigation';
 import LandingPage from './LandingPage';
+import ProblemStatement from './pages/ProblemStatement';
+import Solution from './pages/Solution';
+import Features from './pages/Features';
+import HowItWorks from './pages/HowItWorks';
+import Technology from './pages/Technology';
+import Impact from './pages/Impact';
 import './App.css';
 
 const socket = io('http://localhost:5000');
@@ -41,16 +49,15 @@ function MapClickHandler({ onMapClick }) {
   return null;
 }
 
-function App() {
-  const [showLanding, setShowLanding] = useState(true);
+function MapApp() {
   const [hazards, setHazards] = useState([]);
   const [reportMode, setReportMode] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [hazardType, setHazardType] = useState('pothole');
   const [description, setDescription] = useState('');
-  const [userLocation, setUserLocation] = useState([51.505, -0.09]); // Default to London
+  const [userLocation, setUserLocation] = useState([51.505, -0.09]);
   const [filterTypes, setFilterTypes] = useState([]);
-  const [showStats, setShowStats] = useState(true);
+  const showStats = true;
 
   useEffect(() => {
     // Get user's location
@@ -133,12 +140,8 @@ function App() {
     return acc;
   }, {});
 
-  if (showLanding) {
-    return <LandingPage onGetStarted={() => setShowLanding(false)} />;
-  }
-
   return (
-    <div className="App">
+    <div className="App" style={{ paddingTop: 0 }}>
       <div className="controls">
         <h1>🚗 Road Hazard Reporter</h1>
         <button 
@@ -250,4 +253,22 @@ function App() {
   );
 }
 
-export default App;
+export default MapApp;
+
+export function App() {
+  return (
+    <>
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/problem" element={<ProblemStatement />} />
+        <Route path="/solution" element={<Solution />} />
+        <Route path="/features" element={<Features />} />
+        <Route path="/how-it-works" element={<HowItWorks />} />
+        <Route path="/technology" element={<Technology />} />
+        <Route path="/impact" element={<Impact />} />
+        <Route path="/app" element={<MapApp />} />
+      </Routes>
+    </>
+  );
+}
