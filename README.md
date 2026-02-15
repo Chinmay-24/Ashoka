@@ -1,6 +1,6 @@
-# Road Hazard Reporter
+# Road Hazard Reporter 🚗
 
-Real-time road hazard reporting system where users can report and view road issues like potholes, debris, accidents, etc.
+Real-time road hazard reporting system where drivers can report and view road issues like potholes, debris, accidents, lane closures, and more.
 
 ## Features
 - Real-time hazard reporting on interactive map

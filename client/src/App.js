@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
 import io from 'socket.io-client';
+import LandingPage from './LandingPage';
 import './App.css';
 
 const socket = io('http://localhost:5000');
@@ -41,6 +42,7 @@ function MapClickHandler({ onMapClick }) {
 }
 
 function App() {
+  const [showLanding, setShowLanding] = useState(true);
   const [hazards, setHazards] = useState([]);
   const [reportMode, setReportMode] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState(null);
@@ -130,6 +132,10 @@ function App() {
     acc[h.type] = (acc[h.type] || 0) + 1;
     return acc;
   }, {});
+
+  if (showLanding) {
+    return <LandingPage onGetStarted={() => setShowLanding(false)} />;
+  }
 
   return (
     <div className="App">
