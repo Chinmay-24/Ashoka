@@ -70,8 +70,8 @@ function App() {
 
     // Listen for real-time updates
     socket.on('newHazard', (hazard) => {
+      setHazards(prev => [...prev, hazard]);
     });
-    setHazards(prev => [...prev, hazard]);
 
     socket.on('hazardUpdated', (updatedHazard) => {
       setHazards(prev => prev.map(h => h.id === updatedHazard.id ? updatedHazard : h));
